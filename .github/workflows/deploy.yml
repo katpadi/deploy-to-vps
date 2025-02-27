@@ -15,6 +15,13 @@ jobs:
      
           script: |
             cd $HOME
-            git clone git@github.com:katpadi/do.git
-            cd do
+            if [ -d "$HOME/deploy-to-vps" ] 
+            then
+              echo "Pulling updates..."
+              cd deploy-to_vps
+            	git pull origin main 
+            else
+              echo "Cloning..."
+            	git clone git@github.com:katpadi/deploy-to-vps.git
+            fi
             echo 'SUCCESS!'
